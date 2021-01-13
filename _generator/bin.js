@@ -4,6 +4,11 @@ const path = require('path')
 const fs = require('fs')
 
 const bible_text_dir = path.join(__dirname, '..', 'bible_text')
+const write_json = (rel_file_path, obj) => {
+	const abs_file_path = path.join(bible_text_dir, rel_file_path + '.json')
+	const json = JSON.stringify(obj, null, 1)
+	fs.writeFileSync(abs_file_path, json, { encoding: 'UTF-8' })
+}
 
 books.forEach(({ name }) => {
 	const normalized_name = name.toLowerCase().replace(/ /g, '')
@@ -39,11 +44,10 @@ books.forEach(({ name }) => {
 		}, [])
 	chapters_array.forEach((chapter, chapter_number) => {
 		if (chapter) {
-			const chapter_filename = path.join(book_dir, chapter_number + '.json')
-			const chapter_json = JSON.stringify(chapter, null, 1)
-			fs.writeFileSync(chapter_filename, chapter_json, { encoding: 'UTF-8' })
+			write_json(`${normalized_name}/${chapter_number}`, chapter)
 		}
 	})
 })
 
+write_json('last_update', new Date().toISOString())
 console.log(`complete`)
