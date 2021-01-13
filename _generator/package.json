@@ -1,0 +1,25 @@
+{
+  "name": "lookup-multiple-bible-verses",
+  "version": "1.0.0",
+  "description": "A simple app to look up multiple bible verses at once",
+  "main": "bin.js",
+  "private": true,
+  "dependencies": {
+    "books-of-the-bible": "^1.1.0",
+    "world-english-bible": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtskydJ/lookup-multiple-bible-verses.git"
+  },
+  "author": "ArtskydJ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArtskydJ/lookup-multiple-bible-verses/issues"
+  },
+  "homepage": "https://github.com/ArtskydJ/lookup-multiple-bible-verses#readme"
+}
