@@ -27,14 +27,13 @@
 			border: 0;
 			resize: vertical;
 			display: inline-block;
-			outline: 1px solid var(--verse-shadow-color);
+			border: 1px solid var(--verse-shadow-color);
 			box-shadow: var(--verse-shadow-color) 0.25em 0.25em 0.25em;
 		}
 		textarea:focus-visible {
-			outline: 1px solid var(--textarea-border-focus-color);
+			border: 1px solid var(--textarea-border-focus-color);
 			box-shadow: var(--textarea-border-focus-color) 0.25em 0.25em 0.25em;
-		}
-		.output {
+			outline: none;
 		}
 		.verse, .err {
 			display: inline-block;
