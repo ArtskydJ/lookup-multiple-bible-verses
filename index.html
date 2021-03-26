@@ -17,6 +17,10 @@
 			border: 0;
 			resize: vertical;
 			display: inline-block;
+			outline: 1px solid #68d;
+		}
+		textarea:focus-visible {
+			box-shadow: #68d 4px 4px 4px;
 		}
 		.output {
 		}
@@ -34,7 +38,7 @@
 	</style>
 </head>
 <body>
-	<textarea></textarea>
+	<textarea autofocus></textarea>
 	<div class="output"></div>
 	<script src="https://www.canonapi.com/v1client.js"></script>
 	<script type="text/javascript">
@@ -47,14 +51,17 @@
 					.split('\n')
 					.filter(ref => ref.trim())
 					.map(ref => {
-						const matches = /(\d*\s*\w+)\s*(\d+)\D+(\d+)(?:\D+(\d+))?/.exec(ref)
+						const matches = /(\d*\s*\w+)\s*(\d+)(?:\D+(\d+)(?:\D+(\d+))?)?/.exec(ref)
 						if (matches) {
-							const [ , book, chapter, start_verse, end_verse ] = matches.map(match => isNaN(Number(match)) ? match : Number(match))
+							const [ , book, chapter, start_verse, end_verse ] = matches.map(match => isNaN(Number(match)) ? match : Math.max(Number(match), 1))
 							return window.canonapiv1client(book, chapter)
 								.then(({ verses, book_name }) => {
-									const slice_end = (end_verse || start_verse) + 1
-									const pretty_ref = `${book_name} ${chapter}:${start_verse + (end_verse ? '-' + end_verse : '')}`
-									const text = verses.slice(start_verse - 1, slice_end - 1).join('')
+									const slice_start = start_verse ? start_verse - 1 : 0
+									const slice_end = (end_verse || start_verse || 1)
+									const pretty_book_chapter = `${book_name} ${chapter}`
+									const pretty_verse = start_verse ? start_verse + (end_verse ? '-' + Math.min(end_verse, verses.length) : '') : ''
+									const pretty_ref = [ pretty_book_chapter, pretty_verse ].filter(Boolean).join(':')
+									const text = verses.slice(slice_start, slice_end).join('')
 									return `<span class="verse"><span class="ref">${pretty_ref}</span>${text}</span>`
 								})
 								.catch(e => `<span class="err">${e.message}</span>`)
