@@ -4,6 +4,12 @@
 	<meta charset="utf-8">
 	<title>Lookup Multiple Bible Verses</title>
 	<style type="text/css">
+		:root {
+			--textarea-border-focus-color: #68d;
+			--verse-bg-color: #eee;
+			--verse-shadow-color: #aaa;
+			--reference-bg-color: #ccc;
+		}
 		html, body, textarea {
 			margin: 0;
 			padding: 0;
@@ -14,25 +20,29 @@
 		}
 		textarea {
 			width: calc(100vw - 1em);
+			box-sizing: border-box;
+			padding: 4px;
 			border: 0;
 			resize: vertical;
 			display: inline-block;
-			outline: 1px solid #68d;
+			outline: 1px solid var(--verse-shadow-color);
+			box-shadow: var(--verse-shadow-color) 4px 4px 4px;
 		}
 		textarea:focus-visible {
-			box-shadow: #68d 4px 4px 4px;
+			outline: 1px solid var(--textarea-border-focus-color);
+			box-shadow: var(--textarea-border-focus-color) 4px 4px 4px;
 		}
 		.output {
 		}
 		.verse {
-			background-color: #eee;
+			background-color: var(--verse-bg-color);
 			display: inline-block;
 			padding: 0.5em;
-			box-shadow: #aaa 4px 4px 4px;
+			box-shadow: var(--verse-shadow-color) 4px 4px 4px;
 		}
 		.ref {
 			padding: 0.2em 0.3em;
-			background-color: #ccc;
+			background-color: var(--reference-bg-color);
 			display: inline-block;
 			margin-right: 1em;
 		}
