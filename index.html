@@ -28,6 +28,7 @@
 			background-color: #eee;
 			display: inline-block;
 			padding: 0.5em;
+			box-shadow: #aaa 4px 4px 4px;
 		}
 		.ref {
 			padding: 0.2em 0.3em;
@@ -51,13 +52,13 @@
 					.split('\n')
 					.filter(ref => ref.trim())
 					.map(ref => {
-						const matches = /(\d*\s*\w+)\s*(\d+)(?:\D+(\d+)(?:\D+(\d+))?)?/.exec(ref)
+						const matches = /(\d*\D+)(\d+)(?:\D+(\d+)(?:\D+(\d+))?)?/.exec(ref)
 						if (matches) {
 							const [ , book, chapter, start_verse, end_verse ] = matches.map(match => isNaN(Number(match)) ? match : Math.max(Number(match), 1))
 							return window.canonapiv1client(book, chapter)
 								.then(({ verses, book_name }) => {
 									const slice_start = start_verse ? start_verse - 1 : 0
-									const slice_end = (end_verse || start_verse || 1)
+									const slice_end = (end_verse || start_verse || Infinity)
 									const pretty_book_chapter = `${book_name} ${chapter}`
 									const pretty_verse = start_verse ? start_verse + (end_verse ? '-' + Math.min(end_verse, verses.length) : '') : ''
 									const pretty_ref = [ pretty_book_chapter, pretty_verse ].filter(Boolean).join(':')
