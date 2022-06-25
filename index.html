@@ -55,39 +55,6 @@
 <body>
 	<textarea autofocus></textarea>
 	<div class="output"></div>
-	<script src="https://www.canonapi.com/v1client.js"></script>
-	<script type="text/javascript">
-		const textarea = document.querySelector('textarea')
-		const output = document.querySelector('div.output')
-
-		function refresh() {
-			Promise.all(
-				textarea.value
-					.split('\n')
-					.filter(ref => ref.trim())
-					.map(ref => {
-						const matches = /(\d*\D+)(\d+)(?:\D+(\d+)(?:\D+(\d+))?)?/.exec(ref)
-						if (matches) {
-							const [ , book, chapter, start_verse, end_verse ] = matches.map(match => isNaN(Number(match)) ? match : Math.max(Number(match), 1))
-							return window.canonapiv1client(book, chapter)
-								.then(({ verses, book_name }) => {
-									const slice_start = start_verse ? start_verse - 1 : 0
-									const slice_end = (end_verse || start_verse || Infinity)
-									const pretty_book_chapter = `${book_name} ${chapter}`
-									const pretty_verse = start_verse ? start_verse + (end_verse ? '-' + Math.min(end_verse, verses.length) : '') : ''
-									const pretty_ref = [ pretty_book_chapter, pretty_verse ].filter(Boolean).join(':')
-									const text = verses.slice(slice_start, slice_end).join('')
-									return `<span class="verse"><span class="ref">${pretty_ref}</span>${text}</span>`
-								})
-								.catch(e => `<span class="err">${e.message}</span>`)
-						}
-					})
-			).then(html => output.innerHTML = html.filter(Boolean).join(''))
-		}
-
-		textarea.oninput = refresh
-
-		refresh()
-	</script>
+	<script src="./bundle.js"></script>
 </body>
 </html>
