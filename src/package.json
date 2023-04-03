@@ -19,6 +19,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -cw",
+    "build2": "esbuild js/app.js --bundle --alias:books-of-the-bible=./js/books-of-the-bible.json --outfile=../bundle.js --sourcemap --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
