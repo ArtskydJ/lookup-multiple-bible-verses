@@ -1,4 +1,4 @@
-const books = require('books-of-the-bible')
+import books from 'books-of-the-bible'
 
 const cache_clearing_handled = fetch('https://www.canonapi.com/v1/last_update.json')
 	.then(res => res.text())

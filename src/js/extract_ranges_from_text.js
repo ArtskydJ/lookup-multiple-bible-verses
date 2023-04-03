@@ -1,13 +1,9 @@
-const { createRegex, createChapterVerseRangeRegex, extractRangeFromMatch } = require('verse-reference-regex')
-// import { createChapterVerseRangeRegex, extractRangeFromMatch } from 'verse-reference-regex'
-
+import { createRegex, extractRangeFromMatch } from 'verse-reference-regex'
 
 const cvr_all = createRegex({ flags: 'gi' })
 
 export default function extract_references_from_text(text) {
 	const matches = [ ...text.matchAll(cvr_all) ]
-
-	// console.log(matches)
 
 	const ranges = matches.map(match => extractRangeFromMatch(match))
 
