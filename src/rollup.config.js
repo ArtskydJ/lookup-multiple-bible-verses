@@ -4,14 +4,12 @@ import json from '@rollup/plugin-json'
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 
-const dev = true
-
 export default {
 	input: './js/app.js',
 	output: {
 		file: '../bundle.js',
 		format: 'iife',
-		sourcemap: dev,
+		sourcemap: true,
 	},
 	plugins: [
 		alias({
@@ -24,6 +22,6 @@ export default {
 		commonjs({
 			transformMixedEsModules: true,
 		}),
-		! dev && terser(),
+		terser(),
 	],
 }
