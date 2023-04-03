@@ -49,7 +49,7 @@ export default async function fetch_bible_passage_from_range(range) {
 		if (end.verse) {
 			reference += ':' + end.verse
 		}
-	} else if (end.verse) {
+	} else if (end.verse && end.verse !== start.verse) {
 		reference += '-' + end.verse
 	}
 
