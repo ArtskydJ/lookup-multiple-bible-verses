@@ -4,6 +4,25 @@ import fetch_bible_passage_from_range from './fetch_bible_passage_from_range.js'
 const textarea = document.querySelector('textarea')
 const output = document.querySelector('div.output')
 
+function decode_hash_fragment(hash) {
+	const hash_fragment = decodeURIComponent(hash.slice(1))
+	return hash_fragment
+		.replace(/\./g, ':')
+		.replace(/_/g, ` `)
+} 
+
+function encode_hash_fragment(bible_passages) {
+	const hash_content = bible_passages
+		.filter(({ error }) => !error)
+		.map(({ reference }) => reference
+			.replace(/:/g, '.')
+			.replace(/ /g, '_')
+		)
+		.join('_')
+
+	return '#' + encodeURIComponent(hash_content)
+}
+
 async function refresh() {
 	const text = textarea.value
 
@@ -25,11 +44,13 @@ async function refresh() {
 		: `<span class="verse"><span class="ref">${ reference }</span>${ text }</span>`
 	).join('')
 
-	const hash_fragment = bible_passages.filter(({ error }) => !error).map(({ reference }) => reference).join('/')
-	const permalink_html = `<a class="permalink" href="#${encodeURIComponent(hash_fragment)}">Permalink</a>`
-	console.log(permalink_html)
+	output.innerHTML = passage_html
 
-	output.innerHTML = passage_html // + permalink_html
+	document.location.hash = encode_hash_fragment(bible_passages)
+}
+ 
+if (document.location.hash) {
+	textarea.value = decode_hash_fragment(document.location.hash)
 }
 
 textarea.oninput = refresh
