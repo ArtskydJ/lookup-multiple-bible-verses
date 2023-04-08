@@ -12,7 +12,7 @@ export default async function fetch_bible_passage_from_range(range) {
 
 	const chapter_numbers = number_range(start.chapter, end.chapter)
 
-	const chapters_text = await Promise.all(
+	const chapters_html = await Promise.all(
 		chapter_numbers.map(async chapter_number => {
 			const { verses } = await canonapiv1(book, chapter_number)
 
@@ -30,13 +30,26 @@ export default async function fetch_bible_passage_from_range(range) {
 			}
 
 			if (verses.length < slice_end && slice_end !== Infinity) {
-				const prefix = slice_end > verses.length + 1 ? verses.length + 1 + '-' : ''
-				throw new Error(`Invalid verse${ prefix ? 's' : '' }: ${ book } ${ chapter_number }:${ prefix }${ slice_end }`)
+				const plural = verses.length + 1 < slice_end
+				const prefix = plural ? verses.length + 1 + '-' : ''
+				throw new Error(`Th${ plural ? 'ese' : 'is'} verse${ plural ? 's' : '' } don't exist: ${ book } ${ chapter_number }:${ prefix }${ slice_end }`)
 			}
 
-			const text = verses.slice(slice_start, slice_end).join('')
+			const multiple_verses = chapter_numbers.length > 1 || slice_end - slice_start > 1
 
-			return text
+			let html_verses = verses.slice(slice_start, slice_end)
+
+			if (multiple_verses) {
+				html_verses = html_verses.map((text, i) => {
+					let verse_ref = slice_start + i + 1
+					if (chapter_number > chapter_numbers[0] && verse_ref === 1) {
+						verse_ref = book + ' ' + chapter_number + ':' + verse_ref
+					}
+					return `<small>${ verse_ref }</small> ${ text }`
+				})
+			}
+
+			return html_verses.join('')
 		}),
 	)
 
@@ -55,6 +68,6 @@ export default async function fetch_bible_passage_from_range(range) {
 
 	return {
 		reference,
-		text: chapters_text.join(''),
+		text: chapters_html.join(''),
 	}
 }
