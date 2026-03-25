@@ -17,6 +17,11 @@ function normalize(book) {
 	return book.toLowerCase().replace(/ /g, '').trim()
 }
 
+/**
+ * @param {string} book
+ * @param {string} chapter
+ * @return {Promise<{ verses: string[], book_name:string }>}
+ */
 function fetch_cached(book, chapter) {
 	const normalized_book = normalize(book)
 	const valid_book = books.find(({ name, aliases }) => [ name, ...aliases ].map(normalize).includes(normalized_book))

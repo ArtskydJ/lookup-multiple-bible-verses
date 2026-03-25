@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = [ // this can't be ESM and aliased in the verse-reference-regex module
 	{
 		"name": "Genesis",
 		"aliases": [
