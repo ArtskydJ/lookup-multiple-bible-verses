@@ -3,6 +3,7 @@ import { createRegex, extractRangeFromMatch } from 'verse-reference-regex'
 const cvr_all = createRegex({ flags: 'gi' })
 
 export default function extract_references_from_text(text) {
+	text = text.replace(/(\d+)\.(\d+)/g, '$1:$2')
 	const matches = [ ...text.matchAll(cvr_all) ]
 
 	const ranges = matches.map(match => extractRangeFromMatch(match))
@@ -18,7 +19,7 @@ export default function extract_references_from_text(text) {
 			throw new Error('invalid verse range')
 		}
 
-		console.log(JSON.stringify(range))
+		// console.log(JSON.stringify(range))
 	})
 
 	return ranges

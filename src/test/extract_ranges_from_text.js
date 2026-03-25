@@ -23,6 +23,8 @@ test(`single chapter`, () => {
 test(`single verse`, () => {
 	equal_ranges('Exodus 1:1', [{ book: 'Exodus', start: { chapter: 1, verse: 1 }, end: { chapter: 1, verse: 1 } }])
 	equal_ranges('Ex 1:1', [{ book: 'Exodus', start: { chapter: 1, verse: 1 }, end: { chapter: 1, verse: 1 } }])
+	equal_ranges('Exodus 1.1', [{ book: 'Exodus', start: { chapter: 1, verse: 1 }, end: { chapter: 1, verse: 1 } }])
+	equal_ranges('Ex 1.1', [{ book: 'Exodus', start: { chapter: 1, verse: 1 }, end: { chapter: 1, verse: 1 } }])
 })
 
 test(`"passages" that don't exist`, () => {
@@ -34,6 +36,7 @@ test(`"passages" that don't exist`, () => {
 test(`ranges`, () => {
 	equal_ranges('Mark 2-4', [{ book: 'Mark', start: { chapter: 2 }, end: { chapter: 4 } }])
 	equal_ranges('Mark 1:3-9, 11', [{ book: 'Mark', start: { chapter: 1, verse: 3 }, end: { chapter: 1, verse: 9 } }])
+	equal_ranges('Mark 1.3-2.4', [{ book: 'Mark', start: { chapter: 1, verse: 3 }, end: { chapter: 2, verse: 4 } }])
 })
 
 test(`impossible ranges`, () => {
