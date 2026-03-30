@@ -59,7 +59,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"1 Sam",
 			"1st Sam",
 			"1st Samuel",
-			"First Samuel"
+			"First Samuel",
+			"I Samuel"
 		]
 	},
 	{
@@ -69,7 +70,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"2 Sam",
 			"2nd Sam",
 			"2nd Samuel",
-			"Second Samuel"
+			"Second Samuel",
+			"II Samuel"
 		]
 	},
 	{
@@ -79,7 +81,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"1 Kgs",
 			"1st Kgs",
 			"1st Kings",
-			"First Kings"
+			"First Kings",
+			"I Kings"
 		]
 	},
 	{
@@ -89,7 +92,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"2 Kgs",
 			"2nd Kgs",
 			"2nd Kings",
-			"Second Kings"
+			"Second Kings",
+			"II Kings"
 		]
 	},
 	{
@@ -99,7 +103,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"1 Chr",
 			"1st Chr",
 			"1st Chronicles",
-			"First Chronicles"
+			"First Chronicles",
+			"I Chronicles"
 		]
 	},
 	{
@@ -109,7 +114,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"2 Chr",
 			"2nd Chr",
 			"2nd Chronicles",
-			"Second Chronicles"
+			"Second Chronicles",
+			"II Chronicles"
 		]
 	},
 	{
@@ -325,7 +331,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"1 Cor",
 			"1st Cor",
 			"1st Corinthians",
-			"First Corinthians"
+			"First Corinthians",
+			"I Corinthians"
 		]
 	},
 	{
@@ -334,7 +341,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"2 Cor",
 			"2nd Cor",
 			"2nd Corinthians",
-			"Second Corinthians"
+			"Second Corinthians",
+			"II Corinthians"
 		]
 	},
 	{
@@ -369,7 +377,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"1 Thess",
 			"1st Thess",
 			"1st Thessalonians",
-			"First Thessalonians"
+			"First Thessalonians",
+			"I Thessalonians"
 		]
 	},
 	{
@@ -379,7 +388,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"2 Thess",
 			"2nd Thess",
 			"2nd Thessalonians",
-			"Second Thessalonians"
+			"Second Thessalonians",
+			"II Thessalonians"
 		]
 	},
 	{
@@ -388,7 +398,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"1 Tim",
 			"1st Tim",
 			"1st Timothy",
-			"First Timothy"
+			"First Timothy",
+			"I Timothy"
 		]
 	},
 	{
@@ -397,7 +408,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"2 Tim",
 			"2nd Tim",
 			"2nd Timothy",
-			"Second Timothy"
+			"Second Timothy",
+			"II Timothy"
 		]
 	},
 	{
@@ -432,7 +444,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"1 Pet",
 			"1st Pet",
 			"1st Peter",
-			"First Peter"
+			"First Peter",
+			"I Peter"
 		]
 	},
 	{
@@ -442,7 +455,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 			"2 Pet",
 			"2nd Pet",
 			"2nd Peter",
-			"Second Peter"
+			"Second Peter",
+			"II Peter"
 		]
 	},
 	{
@@ -450,7 +464,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 		"aliases": [
 			"1 Jn",
 			"1st John",
-			"First John"
+			"First John",
+			"I John"
 		]
 	},
 	{
@@ -458,7 +473,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 		"aliases": [
 			"2 Jn",
 			"2nd John",
-			"Second John"
+			"Second John",
+			"II John"
 		]
 	},
 	{
@@ -466,7 +482,8 @@ module.exports = [ // this can't be ESM and aliased in the verse-reference-regex
 		"aliases": [
 			"3 Jn",
 			"3rd John",
-			"Third John"
+			"Third John",
+			"III John"
 		]
 	},
 	{
